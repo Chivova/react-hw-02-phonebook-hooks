@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import s from './ContactForm.module.css';
+
 export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -36,10 +38,11 @@ export default function ContactForm({ onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Phonebook</h1>
+      <h1 className={s.formTitle}>Phonebook</h1>
       <label>
-        <p>Name:</p>
+        <p className={s.formText}>Name:</p>
         <input
+          className={s.formInput}
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -50,8 +53,9 @@ export default function ContactForm({ onSubmit }) {
         />
       </label>
       <label>
-        <p>Number:</p>
+        <p className={s.formText}>Number:</p>
         <input
+          className={s.formInput}
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -61,7 +65,9 @@ export default function ContactForm({ onSubmit }) {
           value={number}
         />
       </label>
-      <button type="submit">Add contact</button>
+      <button className={s.formBtn} type="submit">
+        Add contact
+      </button>
     </form>
   );
 }
